@@ -4,13 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptoAPI"
+        xmlns:viewModel="clr-namespace:CryptoAPI.MVVM.ViewModels"
         mc:Ignorable="d"
-        Height="900" Width="1200"
+        Height="780" Width="1300"
         WindowStyle="None"
         ResizeMode="NoResize"
         AllowsTransparency="True"
         Background="#272537"
         >
+    <Window.DataContext>
+        <viewModel:MainViewModel></viewModel:MainViewModel>
+    </Window.DataContext>
     <Border CornerRadius="40">
         <Grid>
             <Grid.Background>
@@ -21,9 +25,9 @@
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
-                <ColumnDefinition />
+                <ColumnDefinition Width="*"/>
 
-                <ColumnDefinition/>
+
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
@@ -31,37 +35,21 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="1">
-                <RadioButton Content="Home"
+                <RadioButton Content="Crypting Up"
                              Height="50"
                              Foreground="#fff"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}">
+                             IsChecked="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding CryptingUpMarketsCommand}">
                 </RadioButton>
-                <RadioButton Content="page 2"
+                <RadioButton Content="Coin Cap"
                              Height="50"
                              Foreground="#fff"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}">
-                </RadioButton>
-                <RadioButton Content="page 3"
-                             Height="50"
-                             Foreground="#fff"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}">
-                </RadioButton>
-                <RadioButton Content="page 3"
-                             Height="50"
-                             Foreground="#fff"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}">
-                </RadioButton>
-                <RadioButton Content="page 4"
-                             Height="50"
-                             Foreground="#fff"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}">
-                </RadioButton>
-                <RadioButton Content="page 5"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding CoinCapMarketsCommand}" ClickMode="Release"/>
+                <RadioButton Content="Coin Gecko"
                              Height="50"
                              Foreground="#fff"
                              FontSize="14"
@@ -72,16 +60,19 @@
                      Height="40"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Left"
-                     Margin="5"
+                     Margin="125,18,125,17"
                      Grid.Column="1"
                      Style="{StaticResource ModernTextbox}">
-                <TextBox.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="1"/>
-                        <GradientStop Color="#FF26BDFD" Offset="0"/>
-                    </LinearGradientBrush>
-                </TextBox.Background>
             </TextBox>
+            <ScrollViewer CanContentScroll="True"
+                          Content="{Binding CurrentView}"  
+                          Grid.Column="1" Grid.Row="1"/>
+
+            <!--<ScrollViewer  CanContentScroll="True"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="3">
+                        
+            </ScrollViewer>-->
         </Grid>
     </Border>
 </Window>
