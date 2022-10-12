@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Fonts\" />
-    <Folder Include="MVVM\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MVVM\ViewModels\CoinGeckoVM\" />
+    <Folder Include="MVVM\Views\CoinGecko\" />
   </ItemGroup>
 
 </Project>
