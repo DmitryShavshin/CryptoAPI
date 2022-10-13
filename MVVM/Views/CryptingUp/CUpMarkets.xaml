@@ -15,7 +15,7 @@
                        Margin="0 0 0 20" FontWeight="Bold" FontStyle="Normal">
         </TextBlock>
         <StackPanel>
-            <ItemsControl x:Name="ExchangesList" ItemsSource="{Binding ExchangesList}">
+            <ItemsControl  x:Name="ExchangesList" ItemsSource="{Binding ExchangesList}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Width="350"
@@ -36,9 +36,83 @@
                                 </RectangleGeometry>
                             </Border.Clip>
                             <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <StackPanel>
-                                    <!--<TextBlock Text="{Binding Name }"></TextBlock>-->
-                                    <TextBlock Text="{Binding Price }"></TextBlock>
+                                    <TextBlock Text="{Binding BaseAsset}"
+                                               Foreground="#fff"
+                                               FontSize="18" 
+                                               FontWeight="Bold" 
+                                               TextAlignment="Right"
+                                               Margin="0 0 10 0"
+                                               FontFamily="Montserrat"/>
+                                    <TextBlock Text="{Binding ExchangeId}"
+                                               Foreground="#fff"
+                                               FontSize="28"
+                                               Margin="5 0 0 0"
+                                               FontFamily="Montserrat"/>
+                                    <TextBlock Text="{Binding Symbol}"
+                                               Foreground="#fff"
+                                               Margin="5 0 0 0"
+                                               FontWeight="Bold"
+                                               FontFamily="Montserrat"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1"
+                                Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+                                    <TextBlock Text="Price:" 
+                                               Foreground="White" 
+                                               FontWeight="Bold" 
+                                               FontSize="11" 
+                                               HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{Binding Price}"
+                                               Margin="0 0 15 0"
+                                               FontSize="14"
+                                               Foreground="#fff"
+                                               FontFamily="Montserrat"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                                    <TextBlock Text="change_24h"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="#fff"
+                                               Margin="10 0 0 0"
+                                               FontFamily="Montserrat"/>
+                                    <TextBlock Text="{Binding Change24h}"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="#fff"
+                                               Margin="5 0 0 0"
+                                               FontFamily="Montserrat"/>
+                                    <TextBlock Text="volume_24h"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="#fff"
+                                               Margin="10 0 0 0"
+                                               FontFamily="Montserrat"/>
+                                    <TextBlock Text="{Binding Volume24h}"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="#fff"
+                                               Margin="5 0 0 0"
+                                               FontFamily="Montserrat"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="status"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="#fff"
+                                               Margin="0 5 15 0" FontFamily="Montserrat" HorizontalAlignment="Right"/>
+                                    <TextBlock Text="{Binding Status}"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="#fff"
+                                               Margin="0 5 15 0" FontFamily="Montserrat" HorizontalAlignment="Right"/>
                                 </StackPanel>
                             </Grid>
                         </Border>
@@ -50,6 +124,7 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
+           
         </StackPanel>
         <!--<StackPanel >
                 <TextBlock Text="Other Crypt"

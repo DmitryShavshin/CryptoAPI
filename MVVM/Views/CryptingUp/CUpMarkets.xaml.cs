@@ -9,12 +9,11 @@ namespace CryptoAPI.MVVM.Views.CryptingUp
     /// </summary>
     public partial class CUpMarkets : UserControl
     {
-        private readonly CryptingUPMarketsVM CryptingUPMarkets = new CryptingUPMarketsVM();
+        private readonly CryptingUPMarketsVM cryptingUPMarketsVM = new CryptingUPMarketsVM();
         public CUpMarkets()
         {
             InitializeComponent();
-            DataContext = new CryptingUPMarketsVM();
-            ExchangesList.ItemsSource = CryptingUPMarkets.GetMarkets();
+            ExchangesList.ItemsSource = cryptingUPMarketsVM.GetMarkets();
         }
     }
 }

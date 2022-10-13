@@ -26,15 +26,14 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
-
-
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="1">
+            <StackPanel Grid.Row="2">
                 <RadioButton Content="Crypting Up"
                              Height="50"
                              Foreground="#fff"
@@ -64,9 +63,19 @@
                      Grid.Column="1"
                      Style="{StaticResource ModernTextbox}">
             </TextBox>
+            <StackPanel HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Grid.Row="1">
+                <Button Content="btn1" 
+                        Height="50"
+                        Width="100"
+                        Command="{Binding CoinCapCandlesComand}" />
+               
+            </StackPanel>
             <ScrollViewer CanContentScroll="True"
-                          Content="{Binding CurrentView}"  
-                          Grid.Column="1" Grid.Row="1"/>
+                          Content="{Binding CurrentView}" 
+                          Grid.Row="2"
+                          Grid.Column="1"/>
 
             <!--<ScrollViewer  CanContentScroll="True"
                            Grid.RowSpan="2"

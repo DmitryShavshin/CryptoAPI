@@ -8,11 +8,11 @@ namespace CryptoAPI.MVVM.Views.CoinCap
     /// </summary>
     public partial class CCMarkets : UserControl
     {
-        private CoinCapMarketsVM CoinCapMarketsVM = new CoinCapMarketsVM();
+        private readonly CoinCapMarketsVM coinCapMarkets = new CoinCapMarketsVM();
         public CCMarkets()
         {
             InitializeComponent();
-            DataContext = CoinCapMarketsVM;
+            MarketsList.ItemsSource = coinCapMarkets.GetMarkets();
         }
     }
 }
