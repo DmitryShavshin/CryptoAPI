@@ -10,19 +10,38 @@ namespace CryptoAPI.MVVM.ViewModels.CoinCapVM
 {
     public class CoinCapCandlesVM
     {
-        private CoinCapCandles CoinCapCandles = new CoinCapCandles();
+        private CoinCapCandles CoinCapCandles { get; set; }
         public ChartValues<double> High { get; set; }
         public ChartValues<double> Low { get; set; }
-        public ChartValues<double> Volume { get; set; }
         public ChartValues<string> Period { get; set; }
-       
-
-        public List<Candles> GetCandles()
+        public CoinCapCandlesVM(string exchange, string baseId, string quoteId)
         {
+            CreateChart(exchange, baseId, quoteId);
+        }
+
+        public CoinCapCandlesVM()
+        {
+
+        }
+
+        public void CreateChart(string exchange, string baseId, string quoteId)
+        {
+            Period = new ChartValues<string>();
+            List<Candles> candlesList = new List<Candles>();
+            candlesList = GetCandles(exchange, baseId, quoteId);
+            High = new ChartValues<double>(candlesList.Select(h => h.High));
+            Low = new ChartValues<double>(candlesList.Select(l => l.Low));
+            var UnixTime = new ChartValues<long>(candlesList.Select(h => h.Period));
+            TimeConverter(UnixTime);
+        }
+
+        public List<Candles> GetCandles(string exchange, string baseId, string quoteId)
+        {
+            CoinCapCandles = new CoinCapCandles(exchange, baseId, quoteId);
             var request = CoinCapCandles.GetCandles();
             var CandlesList = JsonConvert.DeserializeObject<CandlesList>(request);
             return CandlesList.DataList;
-        }
+        }      
 
         private void TimeConverter(ChartValues<long> unixTime)
         {
@@ -31,18 +50,6 @@ namespace CryptoAPI.MVVM.ViewModels.CoinCapVM
                 DateTime time = DateTimeOffset.FromUnixTimeMilliseconds(item).UtcDateTime;
                 Period.Add(time.ToString());
             }
-        }
-
-        public CoinCapCandlesVM()
-        {
-            Period = new ChartValues<string>();
-            List<Candles> candlesList = new List<Candles>();
-            candlesList = GetCandles();
-            High = new ChartValues<double>(candlesList.Select(h => h.High));
-            Low = new ChartValues<double>(candlesList.Select(l => l.Low));
-            Volume = new ChartValues<double>(candlesList.Select(l => l.Volume));
-            var UnixTime = new ChartValues<long>(candlesList.Select(h => h.Period));
-            TimeConverter(UnixTime);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using CryptoAPI.Core;
+using CryptoAPI.MVVM.Models.CoinCapModels;
 using CryptoAPI.MVVM.ViewModels.CoinCapVM;
 using CryptoAPI.MVVM.ViewModels.CryptingUpVM;
+using System.Windows;
 
 namespace CryptoAPI.MVVM.ViewModels
 {
@@ -19,16 +21,14 @@ namespace CryptoAPI.MVVM.ViewModels
             get { return _currentView; }
             set {
                 _currentView = value;
-                OnPropertyChanged();    
+                OnPropertyChanged();
             }
         }
-
 
         public MainViewModel()
         {
             CryptingUPMarkets = new CryptingUPMarketsVM();
             CoinCapMarkets = new CoinCapMarketsVM();
-            CoinCapCandles = new CoinCapCandlesVM();
             CurrentView = CryptingUPMarkets;
 
 
@@ -38,15 +38,23 @@ namespace CryptoAPI.MVVM.ViewModels
                 CurrentView = CryptingUPMarkets;
             });
 
-            CoinCapMarketsCommand = new RelayCommand( o =>
-            {
-                CurrentView = CoinCapMarkets;
-            });
-
-            CoinCapCandlesComand = new RelayCommand(o =>
-            {
-                CurrentView = CoinCapCandles;
-            });
+            CoinCapMarketsCommand = new RelayCommand(o =>
+           {
+               CurrentView = CoinCapMarkets;
+           });
         }
+        
+        public RelayCommand GetCandlesTestFunc => new RelayCommand((obj) => {
+            try
+            {
+                var result = (obj as Market);
+                CoinCapCandles = new CoinCapCandlesVM(result.ExchangeId, result.BaseId, result.QuoteId);
+                CurrentView = CoinCapCandles;
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        });
     }
 }

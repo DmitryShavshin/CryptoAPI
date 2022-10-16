@@ -12,7 +12,6 @@
             <lvc:CartesianChart.Series>
                 <lvc:LineSeries Title="High" Values="{Binding High}"/>
                 <lvc:LineSeries Title="Low" Values="{Binding Low}"/>
-                <lvc:LineSeries Title="Volume" Values="{Binding Volume}"/>
             </lvc:CartesianChart.Series>
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="High" Labels="{Binding Period}"></lvc:Axis>

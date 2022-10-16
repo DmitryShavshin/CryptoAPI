@@ -1,4 +1,6 @@
-﻿using CryptoAPI.MVVM.ViewModels.CoinCapVM;
+﻿using CryptoAPI.MVVM.Models.CoinCapModels;
+using CryptoAPI.MVVM.ViewModels.CoinCapVM;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CryptoAPI.MVVM.Views.CoinCap
@@ -12,6 +14,7 @@ namespace CryptoAPI.MVVM.Views.CoinCap
         public CCMarkets()
         {
             InitializeComponent();
+            DataContext = coinCapMarkets;
             MarketsList.ItemsSource = coinCapMarkets.GetMarkets();
         }
     }

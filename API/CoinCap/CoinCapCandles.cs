@@ -5,17 +5,24 @@ namespace CryptoAPI.API.CoinCap
 {
     public class CoinCapCandles
     {
+        private static string _exchange = "poloniex";
+        private static string _baseId = "ethereum";
+        private static string _quoteId = "bitcoin";
+        private static string _interval = Interval.w1.ToString();
+        public CoinCapCandles(string exchange, string baseId, string quoteId)
+        {
+            _exchange = exchange;
+            _baseId = baseId;
+            _quoteId = quoteId;
+        }
 
-        private static string exchange = "poloniex";
-        private static string baseId = "ethereum";
-        private static string quoteId = "bitcoin";
-        private static string interval = Interval.w1.ToString();
+        public CoinCapCandles() { }
 
-        private string marketUrl = $"http://api.coincap.io/v2/candles?exchange={exchange}&interval={interval}&baseId={baseId}&quoteId={quoteId}";
+        private string marketUrl = $"http://api.coincap.io/v2/candles?exchange={_exchange}&interval={_interval}&baseId={_baseId}&quoteId={_quoteId}";
         private Execute execute = new Execute();
         private string Response { get; set; }
 
-
+      
         // GET/Candles
         public string GetCandles()
         {
