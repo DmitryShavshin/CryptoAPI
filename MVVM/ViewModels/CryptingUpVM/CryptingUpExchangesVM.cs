@@ -35,5 +35,6 @@ namespace CryptoAPI.MVVM.ViewModels.CryptingUpVM
             var ExchangesList = JsonConvert.DeserializeObject<ExchangesList>(request);
             return ExchangesList.Exchanges;
         }
+
     }
 }

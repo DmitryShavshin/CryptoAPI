@@ -9,6 +9,7 @@ namespace CryptoAPI.MVVM.ViewModels
 {
     class MainViewModel : ObservableObject
     {
+        private object _currentView;
         private CryptingUPMarketsVM CryptingUPMarkets { get; set; }
         private CryptingUpExchangesVM CryptingUPExchanges { get; set; }
         private CryptingUpAssetsVM CryptingUPAssets { get; set; }
@@ -24,12 +25,13 @@ namespace CryptoAPI.MVVM.ViewModels
             get { return _currentView; }
             set {
                 _currentView = value;
-                OnPropertyChanged();
+                OnPropertyChanged();    
             }
         }
 
+
         public MainViewModel()
-        {        
+        {
             CryptingUPMarkets = new CryptingUPMarketsVM();
             CoinCapMarkets = new CoinCapMarketsVM();
             CurrentView = CryptingUPMarkets;
@@ -42,9 +44,9 @@ namespace CryptoAPI.MVVM.ViewModels
             });
 
             CoinCapMarketsCommand = new RelayCommand(o =>
-           {
-               CurrentView = CoinCapMarkets;
-           });      
+            {
+                CurrentView = CoinCapMarkets;
+            });
         }
         
         public RelayCommand GetCandlesCoinCap => new RelayCommand((obj) => 

@@ -48,7 +48,8 @@ namespace CryptoAPI
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-
+            base.OnMouseLeftButtonDown(e);
+            this.DragMove();
         }
     }
 }
