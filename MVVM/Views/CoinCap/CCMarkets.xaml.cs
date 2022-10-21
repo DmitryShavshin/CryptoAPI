@@ -1,6 +1,4 @@
-﻿using CryptoAPI.MVVM.Models.CoinCapModels;
-using CryptoAPI.MVVM.ViewModels.CoinCapVM;
-using System.Windows;
+﻿using CryptoAPI.MVVM.ViewModels.CoinCapVM;
 using System.Windows.Controls;
 
 namespace CryptoAPI.MVVM.Views.CoinCap

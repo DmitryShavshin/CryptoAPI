@@ -14,5 +14,9 @@ namespace CryptoAPI.MVVM.ViewModels.CryptingUpVM
             var MarketsList = JsonConvert.DeserializeObject<MarketsList>(request);
             return MarketsList.Markets;
         }
+        public CryptingUPMarketsVM()
+        {
+
+        }
     }
 }

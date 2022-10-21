@@ -1,5 +1,4 @@
-﻿using CryptoAPI.API.CoinCap;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,15 +14,13 @@ using System.Windows.Shapes;
 namespace CryptoAPI.MVVM.Views.CryptingUp
 {
     /// <summary>
-    /// Interaction logic for CUpExchanges.xaml
+    /// Interaction logic for CryptingUpAssetsOverviewView.xaml
     /// </summary>
-    public partial class CUpExchanges : UserControl
+    public partial class CryptingUpAssetsOverviewView : UserControl
     {
-        private readonly CoinCapMarkets coinCapMarkets = new CoinCapMarkets();
-        public CUpExchanges()
+        public CryptingUpAssetsOverviewView()
         {
             InitializeComponent();
-            ExchangesList.ItemsSource = coinCapMarkets.GetMarkets();
         }
     }
 }

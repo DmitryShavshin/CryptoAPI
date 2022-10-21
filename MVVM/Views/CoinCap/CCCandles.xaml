@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CryptoAPI.MVVM.Views.CoinCap"
-             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:viewmodels="clr-namespace:CryptoAPI.MVVM.ViewModels" xmlns:core="clr-namespace:CryptoAPI.Core" d:DataContext="{d:DesignInstance Type=core:ObservableObject}"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:viewmodels="clr-namespace:CryptoAPI.MVVM.ViewModels" 
+             xmlns:core="clr-namespace:CryptoAPI.Core" d:DataContext="{d:DesignInstance Type=core:ObservableObject}"
+             mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Stretch" MinWidth="1100" MinHeight="500">
         <lvc:CartesianChart>
             <lvc:CartesianChart.Series>
                 <lvc:LineSeries Title="High" Values="{Binding High}"/>

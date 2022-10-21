@@ -11,9 +11,9 @@ namespace CryptoAPI.MVVM.ViewModels.CoinCapVM
     public class CoinCapCandlesVM
     {
         private CoinCapCandles CoinCapCandles { get; set; }
-        public ChartValues<double> High { get; set; }
-        public ChartValues<double> Low { get; set; }
-        public ChartValues<string> Period { get; set; }
+        public ChartValues<double> High { get; private set; }
+        public ChartValues<double> Low { get; private set; }
+        public ChartValues<string> Period { get; private set; }
         public CoinCapCandlesVM(string exchange, string baseId, string quoteId)
         {
             CreateChart(exchange, baseId, quoteId);

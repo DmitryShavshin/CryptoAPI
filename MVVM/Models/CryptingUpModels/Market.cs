@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using LiveCharts;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using CryptoAPI.Core;
 
 namespace CryptoAPI.MVVM.Models.CryptingUpModels
 {
@@ -43,6 +45,16 @@ namespace CryptoAPI.MVVM.Models.CryptingUpModels
 
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; }
+
+        public ChartValues<int> Rnd { get; set; }
+
+        public Market()
+        {
+            RandomChartInfo randomChartInfo = new RandomChartInfo();
+            Rnd = new ChartValues<int>();
+            var nums = randomChartInfo.Numbers();
+            Rnd.AddRange(nums);
+        }
     }
 
     public class MarketsList 

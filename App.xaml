@@ -1,33 +1,39 @@
 ﻿<Application x:Class="CryptoAPI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:CryptoAPI"
-             xmlns:viewModelCryptingUp="clr-namespace:CryptoAPI.MVVM.ViewModels.CryptingUpVM"
              xmlns:viewModelCoinCap="clr-namespace:CryptoAPI.MVVM.ViewModels.CoinCapVM"
-             xmlns:viewModel="clr-namespace:CryptoAPI.MVVM.ViewModels"
-             xmlns:viewCryptingUp="clr-namespace:CryptoAPI.MVVM.Views.CryptingUp"
+             xmlns:viewModelCryptingUp="clr-namespace:CryptoAPI.MVVM.ViewModels.CryptingUpVM"
              xmlns:viewCoinCap="clr-namespace:CryptoAPI.MVVM.Views.CoinCap"
-             xmlns:view="clr-namespace:CryptoAPI.MVVM.Views"
+             xmlns:viewCryptingUp="clr-namespace:CryptoAPI.MVVM.Views.CryptingUp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="Themes/TextboxTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/TextboxTheme.xaml"/>
+                <ResourceDictionary Source="/Styles/UIColors.xaml"/>
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/ExchangeStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type viewModelCryptingUp:CryptingUPMarketsVM}">
-                <viewCryptingUp:CUpMarkets></viewCryptingUp:CUpMarkets>
+                <viewCryptingUp:CryptingUpMarketsView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModelCryptingUp:CryptingUpExchangesVM}">
-                <viewCryptingUp:CUpExchanges></viewCryptingUp:CUpExchanges>
+                <viewCryptingUp:CryptingUpExchangesView/>
             </DataTemplate>
-            
+            <DataTemplate DataType="{x:Type viewModelCryptingUp:CryptingUpAssetsVM}">
+                <viewCryptingUp:CryptingUpAssetsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModelCryptingUp:CryptingUpAssetVM}">
+                <viewCryptingUp:CryptingUpAssetView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewModelCoinCap:CoinCapMarketsVM}">
-                <viewCoinCap:CCMarkets></viewCoinCap:CCMarkets>
+                <viewCoinCap:CCMarkets/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModelCoinCap:CoinCapCandlesVM}">
-                <viewCoinCap:CCCandles></viewCoinCap:CCCandles>
+                <viewCoinCap:CCCandles/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

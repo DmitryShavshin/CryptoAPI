@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Windows;
 
 namespace CryptoAPI.Core
 {
@@ -28,9 +29,9 @@ namespace CryptoAPI.Core
                 if (strem != null)
                     Response = new StreamReader(strem).ReadToEnd();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                MessageBox.Show(e.ToString());
             }
         }
     }

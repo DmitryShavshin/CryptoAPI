@@ -3,7 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" 
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
+             xmlns:viewmodels="clr-namespace:CryptoAPI.MVVM.ViewModels" xmlns:fa="http://schemas.fontawesome.io/icons/" xmlns:core="clr-namespace:CryptoAPI.Core"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=core:ObservableObject}"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel HorizontalAlignment="Left" >
         <TextBlock Text="Markets"
@@ -13,7 +16,75 @@
                        HorizontalAlignment="Left"
                        Margin="0 0 0 20" FontWeight="Bold" FontStyle="Normal">
         </TextBlock>
+
+
         <StackPanel>
+            <ItemsControl x:Name="MarketsList" DataContext="{Binding  DataContext.MarketsList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="5 5 0  0" Width="250" Height="180" BorderThickness="0 1 0 0" BorderBrush="#2c3a54" CornerRadius="3">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                                    <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                                    <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                    <RowDefinition Height="40"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" HorizontalAlignment="Right">
+                                    <Button Height="20" Width="50" Content="{Binding BaseSymbol}" Foreground="#fff" Background="Transparent" BorderThickness="0"
+                                            Margin="0 0 10 0"
+                                            Command="{Binding DataContext.GetCandlesCoinCap, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                                            CommandParameter="{Binding}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1">
+                                    <TextBlock Text="{Binding ExchangeId}"
+                                               Foreground="#fff"
+                                               FontSize="12"
+                                               Margin="5 0 5 0"
+                                               FontFamily="Montserrat"/>
+                                    <TextBlock Text="{Binding QuoteSymbol}"
+                                               Foreground="#fff"
+                                               Margin="5 0 5 0"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               FontFamily="Montserrat"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1">
+
+                                </StackPanel>
+                                <lvc:CartesianChart Grid.Row="2">
+                                    <lvc:CartesianChart.Series>
+                                        <lvc:LineSeries StrokeThickness="2" Stroke="#6860e6" PointGeometrySize="0" Values="{Binding Rnd}">
+                                            <lvc:LineSeries.Fill>
+                                                <LinearGradientBrush>
+                                                    <GradientStop Color="#2e3966" Offset="0.4"/>
+                                                    <GradientStop Color="#2c3a54" Offset="1.2"/>
+                                                </LinearGradientBrush>
+                                            </lvc:LineSeries.Fill>
+                                        </lvc:LineSeries>
+                                    </lvc:CartesianChart.Series>
+
+                                </lvc:CartesianChart>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
+    
+<!--<StackPanel>
             <ItemsControl x:Name="MarketsList" ItemsSource="{Binding MarketsList}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -127,6 +198,4 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-        </StackPanel>
-    </StackPanel>
-</UserControl>
+        </StackPanel>-->

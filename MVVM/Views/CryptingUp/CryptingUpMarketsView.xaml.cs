@@ -4,16 +4,14 @@ using System.Windows.Controls;
 
 namespace CryptoAPI.MVVM.Views.CryptingUp
 {
-    /// <summary>
-    /// Interaction logic for CUpMarkets.xaml
-    /// </summary>
-    public partial class CUpMarkets : UserControl
+    public partial class CryptingUpMarketsView : UserControl
     {
         private readonly CryptingUPMarketsVM cryptingUPMarketsVM = new CryptingUPMarketsVM();
-        public CUpMarkets()
+
+        public CryptingUpMarketsView()
         {
             InitializeComponent();
-            ExchangesList.ItemsSource = cryptingUPMarketsVM.GetMarkets();
+            MarketsList.ItemsSource = cryptingUPMarketsVM.GetMarkets();
         }
     }
 }

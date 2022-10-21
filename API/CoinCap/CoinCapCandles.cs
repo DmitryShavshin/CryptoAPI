@@ -9,6 +9,10 @@ namespace CryptoAPI.API.CoinCap
         private static string _baseId = "ethereum";
         private static string _quoteId = "bitcoin";
         private static string _interval = Interval.w1.ToString();
+        private string marketUrl = $"http://api.coincap.io/v2/candles?exchange={_exchange}&interval={_interval}&baseId={_baseId}&quoteId={_quoteId}";
+        private Execute execute = new Execute();
+        private string Response { get; set; }
+
         public CoinCapCandles(string exchange, string baseId, string quoteId)
         {
             _exchange = exchange;
@@ -16,12 +20,9 @@ namespace CryptoAPI.API.CoinCap
             _quoteId = quoteId;
         }
 
-        public CoinCapCandles() { }
-
-        private string marketUrl = $"http://api.coincap.io/v2/candles?exchange={_exchange}&interval={_interval}&baseId={_baseId}&quoteId={_quoteId}";
-        private Execute execute = new Execute();
-        private string Response { get; set; }
-
+        public CoinCapCandles() 
+        {
+        }
       
         // GET/Candles
         public string GetCandles()

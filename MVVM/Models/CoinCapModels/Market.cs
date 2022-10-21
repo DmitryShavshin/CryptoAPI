@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CryptoAPI.Core;
+using LiveCharts;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace CryptoAPI.MVVM.Models.CoinCapModels
@@ -40,6 +42,16 @@ namespace CryptoAPI.MVVM.Models.CoinCapModels
 
         [JsonProperty("updated")]
         public object Updated { get; set; }
+        public ChartValues<int> Rnd { get; set; }
+
+
+        public Market()
+        {
+            RandomChartInfo randomChartInfo = new RandomChartInfo();
+            Rnd = new ChartValues<int>();
+            var nums = randomChartInfo.Numbers();
+            Rnd.AddRange(nums);
+        }
     }
 
     public class MarketsList
